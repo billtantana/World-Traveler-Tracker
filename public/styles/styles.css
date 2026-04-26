@@ -1,0 +1,145 @@
+header {
+  margin: 2rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2 {
+  color: #fff;
+  margin: 0;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+}
+
+select {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0;
+  padding: 14px 10px;
+  box-sizing: border-box;
+  font-size: clamp(14px, 4vw, 16px);
+}
+
+header,
+.form-container {
+  padding: 0;
+}
+
+.select-form {
+  display: flex;
+}
+
+.show-mobile {
+  display: block;
+}
+
+.show-desktop {
+  display: none;
+}
+
+.tab-view {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tab-view > label.new-traveler {
+  margin-left: auto;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 0 10px;
+}
+
+button {
+  border: 1px solid white;
+}
+
+button.clear-countries {
+  transition: all 0.15s;
+  padding: 15px 12px;
+}
+
+button.add-button {
+  padding: 15px 12px;
+  transition: all 0.1s;
+}
+
+.tab-view .user-form-container {
+  flex: 1 1 auto;
+  border: 1px solid white;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tab-view .user-container label {
+  width: 100%;
+}
+
+.user-container {
+    width: 100%;
+}
+
+.tab-view .delete-user-container label {
+  padding: 0 4px;
+  line-height: 2;
+}
+
+.tab-view label i {
+  margin: 0;
+  padding: 0 4px;
+}
+
+.ag-canvas {
+  margin-top: -24px;
+}
+
+.title-container {
+  padding: 0 2rem 3rem;
+}
+
+.title-container h1 {
+  color: #fff;
+  font-size: clamp(1.5rem, 2vw, 3rem);
+  margin: 0;
+}
+
+.main-btns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media screen and (min-width: 767px) {
+  header,
+  .tab-view,
+  .form-container {
+    padding: 0 1.5rem;
+  }
+
+  .show-mobile {
+    display: none;
+  }
+
+  .show-desktop {
+    display: block;
+  }
+
+  .tab-view > label.new-traveler {
+    padding: 0 27px;
+  }
+
+  button.clear-countries {
+    padding: 15px;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .title-container {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0 1.5rem;
+  }
+}

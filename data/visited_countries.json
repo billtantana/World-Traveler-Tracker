@@ -1,0 +1,50 @@
+[
+  {
+    "country_code": "CA",
+    "user_id": 1
+  },
+  {
+    "country_code": "GB",
+    "user_id": 1
+  },
+  {
+    "country_code": "AR",
+    "user_id": 1
+  },
+  {
+    "country_code": "CL",
+    "user_id": 2
+  },
+  {
+    "country_code": "CN",
+    "user_id": 2
+  },
+  {
+    "country_code": "KR",
+    "user_id": 2
+  },
+  {
+    "country_code": "CA",
+    "user_id": 3
+  },
+  {
+    "country_code": "MX",
+    "user_id": 3
+  },
+  {
+    "country_code": "US",
+    "user_id": 3
+  },
+  {
+    "country_code": "AE",
+    "user_id": 4
+  },
+  {
+    "country_code": "AF",
+    "user_id": 4
+  },
+  {
+    "country_code": "AL",
+    "user_id": 4
+  }
+]

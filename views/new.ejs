@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New User</title>
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="./styles/new.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Add a Traveler</h1>
+    <form method="get" action="/">
+      <button type="submit">Back to Map</button>
+    </form>
+  </div>
+  <form action="/new" method="post">
+    <input type="text" name="name" placeholder="<%= locals.error ? locals.error : "What's your name?"%>" required>
+
+    <p>Pick a color:</p>
+    <input type="radio" name="color" id="red" value="red" checked required />
+    <label for="red"><span class="red" aria-hidden="true"></span></label>
+
+    <input type="radio" name="color" id="green" value="green" required />
+    <label for="green"><span class="green" aria-hidden="true"></span></label>
+
+    <input type="radio" name="color" id="yellow" value="yellow" required  />
+    <label for="yellow"><span class="yellow" aria-hidden="true"></span></label>
+
+    <input type="radio" name="color" id="olive" value="olive" required  />
+    <label for="olive"><span class="olive" aria-hidden="true"></span></label>
+
+    <input type="radio" name="color" id="orange" value="orange" required  />
+    <label for="orange"><span class="orange" aria-hidden="true"></span></label>
+
+    <input type="radio" name="color" id="teal" value="indigo" required  />
+    <label for="teal"><span class="teal" aria-hidden="true"></span></label>
+
+    <input type="radio" name="color" id="blue" value="blue" required  />
+    <label for="blue"><span class="blue" aria-hidden="true"></span></label>
+
+    <input type="radio" name="color" id="violet" value="violet" required  />
+    <label for="violet"><span class="violet" aria-hidden="true"></span></label>
+
+    <input type="radio" name="color" id="purple" value="purple" required  />
+    <label for="purple"><span class="purple" aria-hidden="true"></span></label>
+
+    <input type="radio" name="color" id="pink" value="pink" required  />
+    <label for="pink"><span class="pink" aria-hidden="true"></span></label>
+
+    <div class="button-container">
+      <button type="reset">Reset</button>
+      <button type="submit">Add</button>
+    </div>
+  </form>
+</body>
+
+</html>
