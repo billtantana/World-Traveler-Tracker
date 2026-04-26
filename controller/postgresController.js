@@ -119,7 +119,7 @@ async function checkVisited() {
 
 function capitalizeName(name) {
   return name
-    .toLowerCase() // Start by making everything lowercase
+    .toLowerCase().trim()
     .replace(/(^|[\s\-\'])\S/g, (match) => match.toUpperCase());
 }
 
