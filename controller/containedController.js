@@ -128,7 +128,7 @@ function nextTravelerId() {
 
 function capitalizeName(name) {
   return name
-    .toLowerCase().trim()
+    .toLowerCase()
     .replace(/(^|[\s\-\'])\S/g, (match) => match.toUpperCase());
 }
 
@@ -198,7 +198,7 @@ export function getTraveler(req, res) {
 }
 
 export async function addNewTraveler(req, res) {
-  const newUser = req.body.name;
+  const newUser = req.body.name.trim();
   const color = req.body.color;
   const cleanName = capitalizeName(newUser);
 
