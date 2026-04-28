@@ -1,51 +1,11 @@
 import express from "express";
 import { query } from "../db/index.js";
 
-const app = express();
-
-async function getFirstUser(req, res, next) {
-  try {
-    const firstUser = await query(
-      "SELECT * FROM users ORDER BY name ASC LIMIT 1",
-    );
-    res.locals.firstUserId = firstUser.rows[0]?.id ?? null;
-    res.locals.firstUserName = firstUser.rows[0]?.name ?? null;
-    res.locals.firstUserColor = firstUser.rows[0]?.color ?? null;
-    next();
-  } catch (error) {
-    console.log("There was an error looking for the first user: ", error);
-    errors = "There was an error looking for the first user";
-    res.locals.firstUserId = null;
-    res.locals.firstUserName = null;
-    res.locals.firstUserColor = null;
-    next();
-  }
-}
-
-app.use(getFirstUser);
-
 let currentUserId = null;
 let currentUser = null;
 let currentColor = "teal";
 let accentColor = "white";
 let errors = null;
-
-app.use((req, res, next) => {
-  if (!currentUserId) {
-    currentUserId = res.locals.firstUserId;
-    currentUser = res.locals.firstUserName;
-    currentColor = res.locals.firstUserColor;
-
-    const colors = ["pink", "yellow"];
-
-    if (colors.includes(res.locals.firstUserColor)) {
-      accentColor = "black";
-    } else {
-      accentColor = "white";
-    }
-  }
-  next();
-});
 
 async function getCountries() {
   try {

@@ -3,39 +3,12 @@ import countries from "../data/countries.json" with { type: "json" };
 import visitedCountries from "../data/visited_countries.json" with { type: "json" };
 import users from "../data/users.json" with { type: "json" };
 
-// Initialize express
-const app = express();
-
 let travelerCountries = countries;
 let travelerVisitedCountries = visitedCountries;
 let travelerUser = users;
 const LOW_CONTRAST_COLORS = ["pink", "yellow"];
 
-async function getFirstUser(req, res, next) {
-  const firstTraveler = travelerUser[0];
-
-  if (firstTraveler) {
-    res.locals.firstUserId = firstTraveler.id ?? null;
-    res.locals.firstUserName = firstTraveler.name ?? null;
-    res.locals.firstUserColor = firstTraveler.color ?? null;
-  } else {
-    res.locals.firstUserId = null;
-    res.locals.firstUserName = null;
-    res.locals.firstUserColor = "teal";
-  }
-  next();
-}
-
-app.use(getFirstUser);
-
 let errors = null;
-
-app.use((req, res, next) => {
-  if (!req.session.currentUserId) {
-    req.session.currentUserId = res.locals.firstUserId;
-  }
-  next();
-});
 
 function getAccentColor(color) {
   return LOW_CONTRAST_COLORS.includes(color) ? "black" : "white";
@@ -51,17 +24,6 @@ function getCurrentTraveler(req, res) {
       currentUser: sessionUser.name,
       currentColor: sessionUser.color ?? "teal",
       accentColor: getAccentColor(sessionUser.color),
-    };
-  }
-
-  if (res.locals.firstUserId) {
-    req.session.currentUserId = res.locals.firstUserId;
-
-    return {
-      currentUserId: res.locals.firstUserId,
-      currentUser: res.locals.firstUserName,
-      currentColor: res.locals.firstUserColor ?? "teal",
-      accentColor: getAccentColor(res.locals.firstUserColor),
     };
   }
 
