@@ -1,11 +1,17 @@
 import express from "express";
 import { query } from "../db/index.js";
 
+const LOW_CONTRAST_COLORS = ["pink", "yellow"];
+
 let currentUserId = null;
 let currentUser = null;
 let currentColor = "teal";
 let accentColor = "white";
 let errors = null;
+
+function getAccentColor(color) {
+  return LOW_CONTRAST_COLORS.includes(color) ? "black" : "white";
+}
 
 async function getCountries() {
   try {
@@ -41,12 +47,11 @@ async function getCountries() {
 async function getUsers() {
   try {
     const result = await query("SELECT * FROM users ORDER BY name ASC");
-    const colors = ["pink", "yellow"];
 
     return result.rows.map((user) => {
       return {
         ...user,
-        accentColor: colors.includes(user.color) ? "black" : "white",
+        accentColor: getAccentColor(user.color),
       };
     });
   } catch (error) {
@@ -79,7 +84,8 @@ async function checkVisited() {
 
 function capitalizeName(name) {
   return name
-    .toLowerCase().trim()
+    .toLowerCase()
+    .trim()
     .replace(/(^|[\s\-\'])\S/g, (match) => match.toUpperCase());
 }
 
@@ -134,14 +140,7 @@ export async function getTraveler(req, res) {
       currentUserId = user;
       currentUser = userInfo.rows[0].name;
       currentColor = userInfo.rows[0].color;
-
-      const colors = ["pink", "yellow"];
-
-      if (colors.includes(userInfo.rows[0].color)) {
-        accentColor = "black";
-      } else {
-        accentColor = "white";
-      }
+      accentColor = getAccentColor(userInfo.rows[0].color);
 
       errors = null;
 
@@ -195,14 +194,7 @@ export async function addNewTraveler(req, res) {
     currentUserId = user.rows[0].id;
     currentUser = user.rows[0].name;
     currentColor = user.rows[0].color;
-
-    const colors = ["pink", "yellow"];
-
-    if (colors.includes(user.rows[0].color)) {
-      accentColor = "black";
-    } else {
-      accentColor = "white";
-    }
+    accentColor = getAccentColor(user.rows[0].color);
 
     res.redirect("/");
   } catch (error) {
